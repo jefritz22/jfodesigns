@@ -4,19 +4,19 @@ heading.innerHTML = heading.textContent.split('').map(letter => `<span>${letter}
 
 document.querySelectorAll('.exhibition-heading span').forEach(span => {
   span.addEventListener('mouseenter', () => {
-    gsap.to(span, { scale: 1.3, color: "#5DADE2", duration: 0.3 });
+    gsap.to(span, { scale: 1.3, color: "#FA4411", duration: 0.3 });
   });
 
   span.addEventListener('mouseleave', () => {
-    gsap.to(span, { scale: 1, color: "#eadf0a", duration: 0.3 });
+    gsap.to(span, { scale: 1, color: "#FA4411", duration: 0.3 });
   });
 
   let isClicked = false;
   span.addEventListener('click', () => {
     if (!isClicked) {
-      gsap.to(span, { rotation: 180, color: "#FF5733", duration: 0.5, ease: "power3.out" });
+      gsap.to(span, { rotation: 180, color: "#FA4411", duration: 0.5, ease: "power3.out" });
     } else {
-      gsap.to(span, { rotation: 0, color: "#eadf0a", duration: 0.5, ease: "power3.out" });
+      gsap.to(span, { rotation: 0, color: "#849E00", duration: 0.5, ease: "power3.out" });
     }
     isClicked = !isClicked;
   });
@@ -48,7 +48,7 @@ boxes.forEach( (box)=>{
 
 // CURSOR ANIMATION
 document.addEventListener('mousemove', (e) => {
-const colors = ['#eadf0a', '#5DADE2'];
+const colors = ['#FA4411', '#849E00'];
 const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
 const circle = document.createElement('div');
