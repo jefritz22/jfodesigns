@@ -45,7 +45,6 @@ boxes.forEach( (box)=>{
 
 })
 
-
 // CURSOR ANIMATION
 document.addEventListener('mousemove', (e) => {
 const colors = ['#FA4411', '#849E00'];

@@ -6,6 +6,7 @@
     --main-font-colour: #849E00;
     --background-colour: #FFFFF3;
     --orange: #FA4411;
+    --black: #2B2D25;
 }
 
 @font-face {
@@ -19,50 +20,30 @@ body {
     color: var(--main-font-colour);
     overflow-x: hidden;
     font-family: Helvetica, Arial, sans-serif;
+
 }
 
-h1 {
-    font-family: 'Bubbles', Helvetica, Arial, sans-serif;
-}
-
-nav{
+nav {
+    position: fixed;
+    z-index: 1;
+    width: 100vw;
+    background-color: var(--background-colour);
     display: flex;
     justify-content: space-between;
-    a{
+    font-weight: 800;
+    font-size: 16px;
+
+    a {
         color: var(--orange);
         text-decoration: none;
+        margin: 1rem 2rem;
     }
 }
-
-.projects {
-    a {
-        font-size: 24px;
-        text-align: center;
-        text-decoration: none;
-        color: var(--main-font-colour);
-        padding: 1rem 2rem;
-        border: var(--main-font-colour) solid 2px;
-        border-radius: 24px;
-        font-weight: 800;
-    }
-
-    a:hover {
-        background-color: var(--main-font-colour);
-        color: var(--background-colour);
-        border: var(--main-font-colour) solid 2px;
-        transition-duration: 500ms;
-    }
-
-    a:active {
-        color: var(--background-colour);
-        background-color: var(--orange);
-    }
-
-}
-
 
 .exhibition-heading {
-    font-size: clamp(200px, 2vw + 2rem, 400px);
+    padding-top: 30vh;
+    padding-bottom: 30vh;
+    font-size: 20vw;
     overflow: hidden;
     cursor: pointer;
     color: var(--main-font-colour);
@@ -76,17 +57,32 @@ nav{
     text-align: center;
 }
 
-.welcome {
-    display: flex;
-    justify-content: left;
-    flex-direction: row-reverse;
-    margin: -1rem 4rem 32px;
-    gap: 32px;
+.bio-creating {
+    color: var(--orange);
+    font-size: 5vw;
+    text-align: left;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-bottom: 0px;
+}
 
-    .steps {
-        width: 40%;
-        padding-top: 3rem;
+.values {
+    font-size: 4vw;
+    padding-left: 45vw;
+    margin-bottom: 30vh;
+
+    h2 {
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    margin: 15vh 2rem;
+    gap: 32px;
 
     .portrait {
         max-width: 20%;
@@ -95,6 +91,8 @@ nav{
     img {
         max-width: 100%;
         border-radius: 32px;
+        width: 100%;
+        height: auto;
     }
 
     h2 {
@@ -105,7 +103,9 @@ nav{
     p {
         margin-bottom: 0px;
         margin-top: 0px;
-        font-size: 20px;
+        font-size: 16px;
+    font-family: "trade-gothic-next", sans-serif;
+
     }
 
     .contacts {
@@ -123,28 +123,50 @@ nav{
 .projects {
     width: 80%;
 
-    h2 {
+    .sub-heading {
+        font-size: 24px;
         text-align: center;
-        font-size: 80px;
         margin-bottom: 0px;
+        color: var(--orange);
     }
 
-    p {
-        margin-top: 0px;
-    }
 
-    .tip {
+    a {
+        font-size: 16px;
         text-align: center;
+        text-decoration: none;
+        color: var(--main-font-colour);
+        padding: 0.5rem 1rem;
+        border: var(--main-font-colour) solid 2px;
+        border-radius: 24px;
+        font-weight: 800;
+    }
+
+    a:hover {
+        background-color: var(--main-font-colour);
+        color: var(--background-colour);
+        border: var(--main-font-colour) solid 2px;
+        transition-duration: 500ms;
+    }
+
+    a:active {
+        color: var(--background-colour);
+        background-color: var(--orange);
     }
 
     h3 {
+        margin-top: 8px;
         font-size: 64px;
         margin-bottom: 8px;
     }
 
     .text {
-        margin-bottom: 100px;
-        font-size: 24px;
+        font-size: 16px;
+        max-width: 80%;
+        margin-bottom: 3rem;
+        color: var(--black);
+        font-family: "trade-gothic-next", sans-serif;
+        font-weight: 300;
     }
 
     img {
@@ -159,16 +181,22 @@ nav{
         margin-top: 2rem;
     }
 
+    .flex-text {
+        align-content: center;
+    }
+
     .reverse {
         flex-direction: row-reverse;
     }
-
 }
 
-.parables {
-    padding-bottom: 5rem;
+footer {
+    margin-top: 10vh;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    font-family: "trade-gothic-next", sans-serif;
 }
-
 
 @media (width > 1600px) {
     .exhibition-heading {
