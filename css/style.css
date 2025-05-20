@@ -76,23 +76,27 @@ nav {
 
 /* ABOUT ME PAGE */
 .bio {
+    justify-content: center;
+    align-items: center;
     gap: 32px;
     padding-top: 5rem;
+    display: flex;
 
     .portrait {
-        max-width: 20%;
+        max-width: 100%;
+        margin-left: 2rem;
+        width: 100%;
     }
 
     img {
         max-width: 100%;
         border-radius: 32px;
-        width: 100%;
-        height: auto;
     }
 
     h2 {
         font-size: 48px;
-        margin-bottom: 48px
+        margin-bottom: 48px;
+        margin-top: 0px;
     }
 
     p {
@@ -100,7 +104,11 @@ nav {
         margin-top: 0px;
         font-size: 16px;
         font-family: "trade-gothic-next", sans-serif;
+    }
 
+    .bio-paragraph {
+        color: var(--black);
+        max-width: 60%;
     }
 
     .contacts {
@@ -110,6 +118,10 @@ nav {
 }
 
 .aboutme-values {
+display: flex;
+gap: 4rem;
+justify-content: space-between;
+
     h2 {
         color: var(--orange);
         font-size: 24px;
@@ -119,6 +131,7 @@ nav {
     p {
         font-family: "trade-gothic-next", sans-serif;
         margin-top: 16px;
+        color: var(--black);
     }
 }
 
@@ -133,6 +146,7 @@ nav {
 
     p {
         font-family: "trade-gothic-next", sans-serif;
+        color: var(--black);
     }
 }
 
@@ -215,7 +229,8 @@ nav {
 
     .reverse {
         flex-direction: row-reverse;
-        img{
+
+        img {
             border-top-right-radius: 32px;
             border-bottom-right-radius: 32px;
             border-top-left-radius: 0px;
@@ -241,19 +256,20 @@ footer {
 @media (1150px > width > 800px) {
     .projects {
         width: 90%;
+            img {
+                border-radius: 32px;
+            }
 
-        h3{
-        font-size: 32px;
+        h3 {
+            font-size: 32px;
 
-        img{
-            border-radius: 32px;
+
         }
-    }
 
-    .text{
-        margin-bottom: 1.5rem;
-        max-width: 100%;
-    }
+        .text {
+            margin-bottom: 1.5rem;
+            max-width: 100%;
+        }
     }
 
 }
@@ -270,6 +286,10 @@ footer {
 
         }
 
+            .reverse{
+                img{
+                border-radius: 32px;
+            }}
         .flex {
             display: block !important;
             margin-bottom: 5rem;
