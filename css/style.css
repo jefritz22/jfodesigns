@@ -9,11 +9,6 @@
     --black: #2B2D25;
 }
 
-@font-face {
-    font-family: Bubbles;
-    src: url(../font/PPPangramSansRounded-Bold.woff);
-}
-
 body {
     margin: 0 auto;
     background-color: var(--background-colour);
@@ -23,6 +18,7 @@ body {
 
 }
 
+/* NAVIGATION BAR */
 nav {
     position: fixed;
     z-index: 1;
@@ -40,15 +36,15 @@ nav {
     }
 }
 
+/* HOMEPAGE */
 .exhibition-heading {
     padding-top: 30vh;
     padding-bottom: 30vh;
     font-size: 20vw;
-    overflow: hidden;
     cursor: pointer;
     color: var(--main-font-colour);
     text-align: center;
-    margin: 0 auto 4rem;
+    margin: 0 auto;
 }
 
 .exhibition-heading span {
@@ -57,6 +53,7 @@ nav {
     text-align: center;
 }
 
+/* TAGLINE AND VALUES */
 .bio-creating {
     color: var(--orange);
     font-size: 5vw;
@@ -69,7 +66,7 @@ nav {
 .values {
     font-size: 4vw;
     padding-left: 45vw;
-    margin-bottom: 30vh;
+    margin-bottom: 10vh;
 
     h2 {
         margin-top: 0px;
@@ -77,12 +74,10 @@ nav {
     }
 }
 
-.about {
-    display: flex;
-    justify-content: center;
-    flex-direction: row-reverse;
-    margin: 15vh 2rem;
+/* ABOUT ME PAGE */
+.bio {
     gap: 32px;
+    padding-top: 5rem;
 
     .portrait {
         max-width: 20%;
@@ -104,7 +99,7 @@ nav {
         margin-bottom: 0px;
         margin-top: 0px;
         font-size: 16px;
-    font-family: "trade-gothic-next", sans-serif;
+        font-family: "trade-gothic-next", sans-serif;
 
     }
 
@@ -114,14 +109,44 @@ nav {
     }
 }
 
+.aboutme-values {
+    h2 {
+        color: var(--orange);
+        font-size: 24px;
+        margin-bottom: 0px;
+    }
+
+    p {
+        font-family: "trade-gothic-next", sans-serif;
+        margin-top: 16px;
+    }
+}
+
+.skills {
+    display: flex;
+    justify-content: space-around;
+
+    h2 {
+        font-size: 24px;
+        color: var(--orange);
+    }
+
+    p {
+        font-family: "trade-gothic-next", sans-serif;
+    }
+}
+
+/* CENTERING DIVS */
 .centering {
     display: flex;
     justify-content: center;
     gap: 2rem;
 }
 
+/* MY WORK LAYOUT */
 .projects {
     width: 80%;
+    padding-top: 5rem;
 
     .sub-heading {
         font-size: 24px;
@@ -163,7 +188,7 @@ nav {
     .text {
         font-size: 16px;
         max-width: 80%;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
         color: var(--black);
         font-family: "trade-gothic-next", sans-serif;
         font-weight: 300;
@@ -172,13 +197,16 @@ nav {
     img {
         max-width: 50%;
         width: 100%;
-        border-radius: 32px;
+        border-top-left-radius: 32px;
+        border-bottom-left-radius: 32px;
     }
 
     .flex {
         display: flex;
         gap: 2rem;
         margin-top: 2rem;
+        margin-bottom: 3rem;
+
     }
 
     .flex-text {
@@ -187,26 +215,101 @@ nav {
 
     .reverse {
         flex-direction: row-reverse;
+        img{
+            border-top-right-radius: 32px;
+            border-bottom-right-radius: 32px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
     }
 }
 
+/* FOOTER */
 footer {
     margin-top: 10vh;
     margin-bottom: 1rem;
     display: flex;
     justify-content: space-around;
     font-family: "trade-gothic-next", sans-serif;
-}
 
-@media (width > 1600px) {
-    .exhibition-heading {
-        font-size: 400px;
+    a {
+        font-family: "trade-gothic-next", sans-serif;
+        color: var(--main-font-colour);
     }
 }
 
+@media (1150px > width > 800px) {
+    .projects {
+        width: 90%;
+
+        h3{
+        font-size: 32px;
+
+        img{
+            border-radius: 32px;
+        }
+    }
+
+    .text{
+        margin-bottom: 1.5rem;
+        max-width: 100%;
+    }
+    }
+
+}
+
 @media (width < 800px) {
-    main {
+
+
+    .projects {
+        width: 90%;
+
+        img {
+            max-width: 100%;
+            border-radius: 32px;
+
+        }
+
+        .flex {
+            display: block !important;
+            margin-bottom: 5rem;
+        }
+
+        h3 {
+            font-size: 48px;
+        }
+
+        .text {
+            max-width: 100%;
+        }
+    }
+
+    .bio-creating {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .values {
+        font-size: 4vw;
+        padding-left: 45vw;
+        margin-bottom: 10vh;
+        margin-top: 16px;
+
+        h2 {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    }
+
+    footer {
+        margin-top: 0px;
         display: block;
+        margin-left: 2rem;
+
+        a {
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
     }
 }
 

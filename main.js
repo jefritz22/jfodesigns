@@ -32,7 +32,7 @@ repeat: -1
 });
 
 //   SCROLL TRIGGER
-const boxes = document.querySelectorAll("img, p, h3, a, h2");
+const boxes = document.querySelectorAll("img, p, h3, h2, section");
 
 boxes.forEach( (box)=>{
 
