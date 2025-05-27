@@ -1,0 +1,84 @@
+:root {
+    --main-font-colour: #849E00;
+    --background-colour: #FFFFF3;
+    --orange: #FA4411;
+    --black: #2B2D25;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+      .sub-heading {
+    padding-top: 5rem;
+padding-bottom: 2rem;
+        font-size: 24px;
+        text-align: center;
+        margin-bottom: 0px;
+        color: var(--orange);
+    }
+  .cards {
+    margin: 0 3rem;
+    display: flex;
+    gap:32px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+
+
+    a{
+        text-decoration: none;
+    }
+        h3 {
+        margin-top: 8px;
+        font-size: 64px;
+        margin-bottom: 8px;
+        color: var(--main-font-colour);
+        text-align: center;
+    }
+
+    .text {
+        font-size: 16px;
+        margin-bottom: 2.5rem;
+        color: var(--black);
+        font-family: "trade-gothic-next", sans-serif;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    img{
+        max-width: 100%;
+        border-radius: 32px;
+    }
+  }
+  
+  .card {
+    /* size of the card */
+    flex: 0 0 60%;
+    height: 100%;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+
+transition-duration: 500ms;
+
+  }
+      .card:hover{
+transform: scale(95%);
+    }
+  
+  
+  /* Hide the scrollbars */
+  
+  .cards::-webkit-scrollbar {
+    display: none; /* This will hide the scrollbar in WebKit browsers */
+  }
+  
+  .cards {
+    -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+  }
+  
