@@ -101,7 +101,8 @@ nav {
         border-radius: 32px;
     }
 
-    h2 {  font-size: 48px;
+    h2 {
+        font-size: 48px;
         margin-bottom: 48px;
         margin-top: 0px;
     }
@@ -119,6 +120,7 @@ nav {
     }
 
     .contacts {
+        color: var(--orange);
         font-weight: bold;
         margin-top: 4px;
     }
@@ -129,17 +131,17 @@ nav {
 
     h3 {
         color: var(--main-font-colour);
-        font-size: 18vw;
+        font-size: 16vw;
         margin: 0px auto;
         text-align: center;
     }
 
     p {
         font-family: "trade-gothic-next", sans-serif;
-        margin: 32px auto;
+        margin: 32px auto 48px;
         color: var(--black);
         text-align: center;
-        font-size:16px;
+        font-size: 16px;
         max-width: 50%;
     }
 }
@@ -149,13 +151,15 @@ nav {
     justify-content: space-around;
 
     h3 {
-        font-size: 24px;
+        font-size: 32px;
         color: var(--orange);
+        margin-bottom: 0px;
     }
 
     p {
         font-family: "trade-gothic-next", sans-serif;
         color: var(--black);
+        margin-top: 16px;
     }
 }
 
@@ -173,7 +177,7 @@ nav {
     padding-top: 5rem;
 
     .sub-heading {
-        font-size: 24px;
+        font-size: 32px;
         text-align: center;
         margin-bottom: 0px;
         color: var(--orange);
@@ -205,7 +209,7 @@ nav {
 
     h3 {
         margin-top: 8px;
-        font-size: 64px;
+        font-size: 32px;
         margin-bottom: 8px;
     }
 
@@ -227,7 +231,6 @@ nav {
     .flex {
         display: flex;
         gap: 2rem;
-        margin-top: 2rem;
         margin-bottom: 3rem;
 
     }
@@ -270,11 +273,12 @@ nav {
         margin-top: 0px;
     }
 
-    h3{
+    h3 {
         margin-bottom: 8px;
         color: var(--orange);
     }
-        video{
+
+    video {
         max-width: 90%;
         margin: 0 auto 5rem;
         display: flex;
@@ -289,13 +293,13 @@ nav {
         margin: 0;
     }
 
-    video{
+    video {
         max-width: 100%;
         margin: 0 auto;
         display: flex;
     }
 
-    iframe{
+    iframe {
         max-width: 100%;
         margin: 5rem auto;
         display: flex;
@@ -364,20 +368,21 @@ footer {
 
         font-size: 15vw;
         text-align: left;
-        padding-left: 3rem;
+        padding-left: 2rem;
     }
 
-    .values{
+    .values {
         text-align: left;
     }
 
-    .cards{
+    .cards {
         display: none !important;
     }
 
-    .hide{
+    .hide {
         display: none;
     }
+
     .projects {
         display: block;
         width: 90%;
@@ -409,13 +414,13 @@ footer {
 
     .bio-creating {
         font-size: 10vw;
-        padding-left: 3rem;
+        padding-left: 2rem;
         padding-right: 1rem;
     }
 
     .values {
         font-size: 7vw;
-        padding-left: 3rem;
+        margin-left: 2rem;
 
         h2 {
             margin-top: 0px;
@@ -424,58 +429,94 @@ footer {
     }
 
     .bio {
-    gap: 32px;
-    padding-top: 5rem;
-    display: block;
-    margin: 0 auto;
-
-    .portrait {
-        max-width: 80%;
+        gap: 32px;
+        padding-top: 5rem;
+        display: block;
         margin: 0 auto;
+
+        .portrait {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 32px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            font-family: "trade-gothic-next", sans-serif;
+            margin: 0 auto;
+        }
+
+        .bio-paragraph {
+            color: var(--black);
+            max-width: 90%;
+        }
+
+        .contacts {
+            font-weight: bold;
+            color: var(--orange);
+            margin: 0 auto;
+            text-align: center;
+        }
     }
 
-    img {
-        max-width: 100%;
-        border-radius: 32px;
-        text-align: center;
+    .aboutme-values {
+
+        margin-bottom: 10vh;
+
+        h3 {
+            text-align: left;
+            padding-left: 2rem;
+        }
+
+        p {
+            margin: 16px auto;
+            text-align: left;
+            max-width: 100%;
+            padding-left: 2rem;
+            padding-right: 1rem;
+        }
     }
 
-    h2 {  font-size: 48px;
-        margin-bottom: 16px;
-        margin-top: 16px;
-        text-align: center;
-    }
-
-    p {
-        font-size: 16px;
-        font-family: "trade-gothic-next", sans-serif;
-        margin: 0 auto;
-    }
-
-    .bio-paragraph {
-        color: var(--black);
-        max-width: 90%;
-    }
-
-    .contacts {
-        font-weight: bold;
-        color: var(--orange);
-        margin: 0 auto;
-        text-align: center;
-    }
-
-.aboutme-values {
-    p {
-        margin: 16px auto;
-        max-width: 100% !important;
-    }
-}
-}
-
-    footer {
-        margin-top: 0px;
+    .skills{
         display: block;
         margin-left: 2rem;
+        h3{
+            margin-bottom: 0px;
+        }
+        p{
+            margin-top: 16px;
+        }
+    }
+
+    .casestudies-info{
+        display: block;
+        margin-left: 2rem;
+    }
+
+    .casestudytext {
+        p {
+            padding-left: 2rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    footer {
+        margin-top: 5rem;
+        display: block;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
 
         a {
             margin-top: 0px;
