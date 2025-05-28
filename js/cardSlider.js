@@ -36,7 +36,7 @@ cards.forEach((card)=>{
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX || e.touches[0].pageX;
-      const walk = (x - startX) * 3; //scroll-fast
+      const walk = (x - startX) * 2; //scroll-fast
       card.scrollLeft = scrollLeft - walk;
     };
   
@@ -44,11 +44,13 @@ cards.forEach((card)=>{
     card.addEventListener('mousedown', start);
     card.addEventListener('mouseleave', end);
     card.addEventListener('mouseup', end);
-    card.addEventListener('mousemove', move);
+card.addEventListener('mousemove', move, { passive: false });
+
   
     // Touch events
     card.addEventListener('touchstart', start);
     card.addEventListener('touchend', end);
-    card.addEventListener('touchmove', move);
+card.addEventListener('touchmove', move, { passive: false });
+
 
   });

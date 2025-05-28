@@ -67,7 +67,6 @@ transition-duration: 500ms;
 transform: scale(95%);
     }
   
-  
   /* Hide the scrollbars */
   
   .cards::-webkit-scrollbar {
