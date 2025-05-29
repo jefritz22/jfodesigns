@@ -5,12 +5,6 @@
   --black: #2B2D25;
 }
 
-html, body {
-  overflow-y: auto;
-  height: auto;
-  touch-action: auto;
-}
-
 .sub-heading {
   padding-top: 5rem;
   padding-bottom: 2rem;
