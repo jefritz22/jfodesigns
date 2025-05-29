@@ -21,3 +21,66 @@ document.querySelectorAll('.exhibition-heading span').forEach(span => {
     isClicked = !isClicked;
   });
 });
+
+
+
+// TYPING ANIMATION
+var typed = new Typed(".auto-type", {
+    strings: ["UX/UI Design", "Copywrite", "Graphic Design"],
+    typeSpeed:50,
+    backSpeed:50,
+    loop: true,
+})
+
+
+// VALUE ANIMATION
+$("document").ready(function(){
+  $width1 = $(".other.jey").css("width");
+  $width2 = $(".other.ef").css("width");
+  
+  $(".other").animate(
+  {
+    width: '0px', 
+    opacity: 0,
+    easing: "easein",
+   }, 0); 
+  
+  $("#wrapper").mouseleave(function(){
+
+    $(".other").stop().animate(
+    {
+      width: "0px", 
+      opacity: 0,
+      easing: "easein",
+     }, 800); 
+    
+    $("#wrapper").stop().animate(
+      {
+        width: '135px',
+      }, 800);
+  });
+
+  $("#wrapper").mouseenter(function(){
+
+    $(".other.jey").stop().animate(
+    {
+      width: $width1, 
+      opacity: '100',
+      easing: "easein",
+     }, 800); 
+    
+    $(".other.ef").stop().animate(
+    {
+      width: $width2, 
+      opacity: '100',
+      easing: "easein",
+     }, 800); 
+
+    $("#wrapper").stop().animate(
+      {
+        width: '600px',
+      }, 800);
+  });
+
+});
+
