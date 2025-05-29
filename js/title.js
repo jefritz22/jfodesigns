@@ -26,7 +26,7 @@ document.querySelectorAll('.exhibition-heading span').forEach(span => {
 
 // TYPING ANIMATION
 var typed = new Typed(".auto-type", {
-    strings: ["ux/ui design", "copywriting", "graphic design"],
+    strings: ["UX/UI design", "copywriting", "graphic design"],
     typeSpeed:50,
     backSpeed:50,
     loop: true,
