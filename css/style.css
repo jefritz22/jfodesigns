@@ -15,8 +15,26 @@ body {
     color: var(--main-font-colour);
     overflow-x: hidden;
     font-family: Helvetica, Arial, sans-serif;
-
 }
+
+.blob {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 650px;
+    height: 650px;
+    border-radius: 100%;
+    background-image: linear-gradient(#ed41d6 10%, #f1e6c2);
+    filter: blur(250px);
+    transition: all 450ms ease-out;
+    position: fixed;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    transform: translate(calc(-50% + 15px), -50%);
+    z-index: -1;
+}
+
 
 /* NAVIGATION BAR */
 nav {
@@ -169,6 +187,8 @@ nav {
     justify-content: center;
     gap: 2rem;
 }
+
+
 
 /* MY WORK LAYOUT */
 .projects {
@@ -509,6 +529,9 @@ footer {
         p {
             padding-left: 2rem;
             padding-right: 1.5rem;
+        }
+        h3{
+            padding-left: 2rem;
         }
     }
 
