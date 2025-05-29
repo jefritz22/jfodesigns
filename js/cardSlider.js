@@ -41,16 +41,16 @@ cards.forEach((card) => {
   };
 
   // Mouse events
-  window.addEventListener('mousedown', start);
-  window.addEventListener('mouseleave', end);
+  card.addEventListener('mousedown', start);
+  card.addEventListener('mouseleave', end);
   window.addEventListener('mouseup', end);
-  window.addEventListener('mousemove', move, { passive: false });
+  card.addEventListener('mousemove', move, { passive: false });
 
 
   // Touch events
-  window.addEventListener('touchstart', start);
-  window.addEventListener('touchend', end);
-  window.addEventListener('touchmove', move, { passive: false });
+  card.addEventListener('touchstart', start);
+  card.addEventListener('touchend', end);
+  card.addEventListener('touchmove', move, { passive: false });
 
 
 });
