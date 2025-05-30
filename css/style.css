@@ -23,7 +23,7 @@ body {
     width: 650px;
     height: 650px;
     border-radius: 100%;
-    background-image: linear-gradient(#ed41d6 10%, #f1e6c2);
+    background-image: linear-gradient(#fa4411 10%, #fffff3);
     filter: blur(250px);
     transition: all 450ms ease-out;
     position: fixed;
@@ -97,6 +97,7 @@ nav {
     margin-bottom: 10vh;
     text-align: center;
     transition-duration: 800ms;
+    color: var(--main-font-colour);
 
     h2 {
         margin-top: 0px;
@@ -116,14 +117,14 @@ nav {
 .bio {
     justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 48px;
     padding-top: 5rem;
     display: flex;
     margin: 0 auto;
 
     .portrait {
         max-width: 100%;
-        margin-left: 2rem;
+        margin-left: 20rem;
         width: 100%;
     }
 
@@ -165,6 +166,11 @@ nav {
         font-size: 16vw;
         margin: 0px auto;
         text-align: center;
+        transition-duration: 500ms;
+    }
+
+    h3:hover{
+        color: var(--orange);
     }
 
     p {
@@ -179,18 +185,18 @@ nav {
 
 .skills {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20%;
 
     h3 {
         font-size: 32px;
         color: var(--orange);
-        margin-bottom: 0px;
+        margin-bottom: 16px;
     }
 
-    p {
+    li {
         font-family: "trade-gothic-next", sans-serif;
         color: var(--black);
-        margin-top: 16px;
     }
 }
 
@@ -374,7 +380,51 @@ footer {
         color: var(--main-font-colour);
     }
 }
+@media (1550px > width > 1150px){
+        .bio{
+        display: block;
+        padding-top: 5rem;
+        display: block;
+        margin: 0 auto;
 
+        .portrait {
+            max-width: 60%;
+            margin: 0 auto;
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 32px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 16px;
+            font-family: "trade-gothic-next", sans-serif;
+            margin: 0 auto;
+            width: 60%;
+        }
+
+        .bio-paragraph {
+            color: var(--black);
+            max-width: 90%;
+        }
+
+        .contacts {
+            font-weight: bold;
+            color: var(--orange);
+            margin: 0 auto;
+            text-align: center;
+        }
+    }
+}
 @media (1150px > width > 800px) {
     .projects {
         width: 90%;
@@ -393,19 +443,25 @@ footer {
         }
     }
 
+
+
 }
 
 @media (width < 800px) {
 
     .exhibition-heading {
-
         font-size: 15vw;
         text-align: left;
-        padding-left: 2rem;
+        padding: 40vh 0 40vh 2rem;
     }
 
     .values {
         text-align: left;
+    }
+
+    .bio-creating{
+height: 10vh;
+padding-bottom: 40vh;
     }
 
     .cards {
@@ -462,7 +518,6 @@ footer {
     }
 
     .bio {
-        gap: 32px;
         padding-top: 5rem;
         display: block;
         margin: 0 auto;
@@ -502,6 +557,11 @@ footer {
             margin: 0 auto;
             text-align: center;
         }
+    }
+
+    .sub-heading{
+        padding-top: 0px !important;
+        margin-top: 0px;
     }
 
     .aboutme-values {

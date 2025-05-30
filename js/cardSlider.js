@@ -51,6 +51,5 @@ cards.forEach((card) => {
   card.addEventListener('touchstart', start);
   card.addEventListener('touchend', end);
   card.addEventListener('touchmove', move, { passive: false });
-
-
 });
+
