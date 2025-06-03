@@ -3,9 +3,9 @@
 }
 
 :root {
-    --main-font-colour: #849E00;
+    --main-font-colour: #dc3800;
     --background-colour: #FFFFF3;
-    --orange: #FA4411;
+    --orange: #a92900;
     --black: #2B2D25;
 }
 
@@ -77,14 +77,32 @@ nav {
 }
 
 /* TAGLINE AND VALUES */
-.bio-creating {
+.bio-name {
     color: var(--main-font-colour);
     font-size: 5vw;
     text-align: left;
     padding-left: 3rem;
     padding-right: 3rem;
-    margin-bottom: 0px;
+    margin-bottom: 16px;
     transition-duration: 800ms;
+    height: auto;
+}
+
+.bio-name:hover {
+    color: var(--orange);
+}
+
+.bio-creating {
+    color: var(--main-font-colour);
+    font-size: 3vw;
+    text-align: left;
+    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-bottom: 40vh;
+    margin-bottom: 0px;
+    height: 20vh;
+    transition-duration: 800ms;
+    margin-top: 0px;
 }
 
 .bio-creating:hover {
@@ -95,23 +113,46 @@ nav {
     font-size: 4vw;
     margin-top: 15vh;
     margin-bottom: 10vh;
-    text-align: center;
     transition-duration: 800ms;
     color: var(--main-font-colour);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-    h2 {
-        margin-top: 0px;
-        margin-bottom: 0px;
-        transition-duration: 300ms
-    }
+.value {
+    display: flex;
+    align-items: flex-start;
+}
 
-    h2:hover {
-        color: var(--orange);
-    }
+.value h2 {
+    margin: 0;
+    width: 500px;
+    font-size: 5vw;
+    transition-duration: 300ms;
+}
 
+.value h2:hover {
+    color: var(--orange);
+}
+
+.definition {
+    align-items: center;
+    font-size: 16px;
+    color: var(--black);
+    font-family: "trade-gothic-next", sans-serif;
+    text-align: left;
+    line-height: 1.6;
+    max-width: 750px;
+    opacity: 0;
+    transition-duration: 500ms;
 }
 
 
+.value:hover .definition {
+    opacity: 1;
+}
 
 /* ABOUT ME PAGE */
 .bio {
@@ -143,6 +184,7 @@ nav {
         margin-bottom: 0px;
         margin-top: 0px;
         font-size: 16px;
+        line-height: 1.6;
         font-family: "trade-gothic-next", sans-serif;
     }
 
@@ -158,15 +200,17 @@ nav {
     }
 }
 
-.contacts{
+.contacts {
 
     font-family: "trade-gothic-next", sans-serif;
     margin-bottom: 0px;
     margin-top: 64px;
-    li{
+
+    li {
         list-style: none;
     }
-    a{
+
+    a {
         text-decoration: underline;
         color: var(--black);
     }
@@ -236,16 +280,16 @@ nav {
     }
 
 
-a{
-    text-decoration: none;
-    color: var(--main-font-colour);
-    transition-duration: 500ms;
-}
+    a {
+        text-decoration: none;
+        color: var(--main-font-colour);
+        transition-duration: 500ms;
+    }
 
-a:hover{
-    opacity: 80%;
-    color: var(--orange);
-}
+    a:hover {
+        opacity: 80%;
+        color: var(--orange);
+    }
 
     h3 {
         margin-top: 8px;
@@ -292,19 +336,36 @@ a:hover{
     }
 }
 
-.casestudies-info {
+.casestudies-hero {
+
     padding-top: 5rem;
     padding-bottom: 5rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
+
+    video {
+        max-width: 90%;
+        margin: 0 auto 2rem;
+        display: flex;
+    }
 
     h1 {
         font-size: 10vw;
         margin-bottom: 0;
         margin-top: 0;
+        text-align: center;
+        transition-duration: 500ms;
     }
+
+    h1:hover{
+        color: var(--orange);
+    }
+}
+
+.casestudies-info {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 10vh;
 
     p {
         font-family: "trade-gothic-next", sans-serif;
@@ -317,24 +378,25 @@ a:hover{
         margin-bottom: 8px;
         color: var(--orange);
     }
-
-    video {
-        max-width: 90%;
-        margin: 0 auto 5rem;
-        display: flex;
+.information{
+    width: 40%;
+}
+    .brief{
+        width:40%;
     }
-
 }
 
 .casestudytext {
     img {
-        max-width: 100%;
+        max-width: 80%;
         height: auto;
-        margin: 0;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
     }
 
     video {
-        max-width: 100%;
+        max-width: 80%;
         margin: 0 auto;
         display: flex;
     }
@@ -375,15 +437,15 @@ footer {
     display: flex;
     justify-content: space-around;
     font-family: "trade-gothic-next", sans-serif;
-
+color: var(--orange);
     a {
         font-family: "trade-gothic-next", sans-serif;
-        color: var(--main-font-colour);
+        color: var(--orange);
     }
 }
 
 @media (1550px > width > 1150px) {
-    
+
     .bio {
         display: block;
         padding-top: 5rem;
@@ -391,8 +453,8 @@ footer {
         margin: 0 auto;
 
         .portrait {
-            max-width: 60%;
-            margin: 0 auto;
+            max-width: 40%;
+            margin: 2rem auto;
         }
 
         img {
@@ -411,8 +473,8 @@ footer {
         p {
             font-size: 16px;
             font-family: "trade-gothic-next", sans-serif;
-            margin: 0 auto;
-            width: 60%;
+            margin: 0 auto 3rem;
+            width: 40%;
         }
 
         .bio-paragraph {
@@ -447,10 +509,20 @@ footer {
         }
     }
 
-.values{
-    padding-top: 10vh;
-}
+    .values {
+        padding-top: 10vh;
+        display: block !important;
+        text-align: left;
 
+        h2 {
+            margin-bottom: 16px;
+        }
+    }
+
+    .definition {
+        opacity: 100%;
+        margin-top: 0px;
+    }
 }
 
 @media (width < 800px) {
@@ -467,10 +539,32 @@ footer {
 
     .values {
         text-align: left;
+        display: block !important;
+        padding: 0px 2rem 0px 0px;
+
+        .value {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 8px;
+        }
+
+        .definition {
+            opacity: 100%;
+            margin-top: 0px;
+        }
+    }
+
+    .bio-name {
+        padding-left: 0px;
+        margin-left: 2rem;
+        font-size: 48px;
     }
 
     .bio-creating {
-        height: 10vh;
+        height: 40vh;
+        font-size: 32px !important;
         padding-bottom: 40vh;
     }
 
@@ -605,9 +699,24 @@ footer {
     .casestudies-info {
         display: block;
         margin-left: 2rem;
+
+        .information{
+            width: 100%;
+            padding-left: 1.5rem;        
+        }
+
+        .brief{
+            width: 100%;
+            padding: 10vh 2rem 10vh 1.5rem;
+        }
     }
 
     .casestudytext {
+
+        img {
+            max-width: 100%;
+        }
+
         p {
             padding-left: 2rem;
             padding-right: 1.5rem;

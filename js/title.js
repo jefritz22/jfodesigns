@@ -4,19 +4,19 @@ heading.innerHTML = heading.textContent.split('').map(letter => `<span>${letter}
 
 document.querySelectorAll('.exhibition-heading span').forEach(span => {
   span.addEventListener('mouseenter', () => {
-    gsap.to(span, { scale: 1.3, color: "#FA4411", duration: 0.3 });
+    gsap.to(span, { scale: 1.3, color: "#a92900", duration: 0.3 });
   });
 
   span.addEventListener('mouseleave', () => {
-    gsap.to(span, { scale: 1, color: "#FA4411", duration: 0.3 });
+    gsap.to(span, { scale: 1, color: "#a92900", duration: 0.3 });
   });
 
   let isClicked = false;
   span.addEventListener('click', () => {
     if (!isClicked) {
-      gsap.to(span, { rotation: 180, color: "#FA4411", duration: 0.5, ease: "power3.out" });
+      gsap.to(span, { rotation: 180, color: "#dc3800", duration: 0.5, ease: "power3.out" });
     } else {
-      gsap.to(span, { rotation: 0, color: "#849E00", duration: 0.5, ease: "power3.out" });
+      gsap.to(span, { rotation: 0, color: "#dc3800", duration: 0.5, ease: "power3.out" });
     }
     isClicked = !isClicked;
   });
@@ -26,7 +26,7 @@ document.querySelectorAll('.exhibition-heading span').forEach(span => {
 
 // TYPING ANIMATION
 var typed = new Typed(".auto-type", {
-    strings: ["UX/UI design", "copywriting", "graphic design", "developer"],
+    strings: ["UX/UI design", "copywriting", "graphic design", "coding"],
     typeSpeed:50,
     backSpeed:50,
     loop: true,
