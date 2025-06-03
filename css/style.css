@@ -383,6 +383,7 @@ footer {
 }
 
 @media (1550px > width > 1150px) {
+    
     .bio {
         display: block;
         padding-top: 5rem;
@@ -446,7 +447,9 @@ footer {
         }
     }
 
-
+.values{
+    padding-top: 10vh;
+}
 
 }
 
@@ -511,6 +514,7 @@ footer {
     }
 
     .values {
+        margin-top: 10vh;
         font-size: 7vw;
         margin-left: 2rem;
 
