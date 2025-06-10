@@ -16,6 +16,58 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-colour);
+    color: var(--black);
+    z-index: 9999;
+    text-align: center;
+    margin: 0 auto;
+
+    p {
+        font-size: 16px;
+        color: var(--orange);
+    }
+}
+
+.loader {
+    width: 120px;
+    height: 60px;
+    padding: 10px;
+    display: flex;
+    margin-left: 45%;
+    margin-top: 45vh;
+    justify-content: center;
+    background-color: var(--background-colour);
+    mix-blend-mode: darken;
+}
+
+.loader:before,
+.loader:after {
+    content: "";
+    width: 40px;
+    border-radius: 50%;
+    background: var(--main-font-colour);
+    animation: l3 1s infinite alternate;
+}
+
+.loader:after {
+    --s: -1;
+}
+
+@keyframes l3 {
+
+    90%,
+    100% {
+        transform: translate(calc(var(--s, 1)*30px))
+    }
+}
+
+
 .blob {
     display: flex;
     justify-content: center;
@@ -448,7 +500,7 @@ footer {
         color: var(--main-font-colour);
     }
 
-    p{
+    p {
         font-size: 16px;
     }
 
@@ -459,7 +511,7 @@ footer {
         margin: 0 auto;
     }
 
-    .smoltext{
+    .smoltext {
         font-size: 12px;
         margin: 32px auto 0;
         text-align: center;
@@ -793,16 +845,17 @@ footer {
             max-width: 100%;
             margin-bottom: 32px;
         }
-        p{
+
+        p {
             margin-top: 0px;
             margin-bottom: 8px;
         }
 
-        .smoltext{
+        .smoltext {
             margin-top: 3rem;
             font-size: 12px;
-text-align: right;
-margin-right: 2rem;
+            text-align: right;
+            margin-right: 2rem;
         }
     }
 
