@@ -3,9 +3,9 @@
 }
 
 :root {
-    --main-font-colour: #849e00;
+    --orange: #849e00;
     --background-colour: #FFFFF3;
-    --orange: #fa4411;
+    --main-font-colour: #671600;
     --black: #2B2D25;
 }
 
@@ -75,7 +75,7 @@ body {
     width: 650px;
     height: 650px;
     border-radius: 100%;
-    background-image: linear-gradient(#fa4411 20%, #fffff3);
+    background-image: linear-gradient(#849e00 20%, #fffff3);
     filter: blur(250px);
     transition: all 450ms ease-out;
     position: fixed;
