@@ -1,4 +1,4 @@
-const cacheName = 'teachable-machine-pwa-v1';
+const cacheName = 'capstone-pwa-v1';
 const assets = [
     './',
     './capstone.html',
