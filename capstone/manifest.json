@@ -7,12 +7,12 @@
   "theme_color": "#333333",
   "icons": [
     {
-      "src": "./capstoneappicon.jpg",
+      "src": "capstoneappicon.jpg",
       "sizes": "192x192",
       "type": "image/jpg"
     },
     {
-      "src": "./capstoneappicon.jpg",
+      "src": "capstoneappicon.jpg",
       "sizes": "512x512",
       "type": "image/jpg"
     }
