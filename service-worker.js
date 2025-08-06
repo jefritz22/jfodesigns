@@ -1,7 +1,7 @@
 const cacheName = 'teachable-machine-pwa-v1';
 const assets = [
     './',
-    './index.html',
+    './capstone.html',
     './manifest.json',
     './capstoneappicon.jpg',
     './capstoneappicon.jpg'
