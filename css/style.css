@@ -844,6 +844,15 @@ footer {
         display: block;
         margin-left: 0.5rem;
 
+        a{
+        font-family: "trade-gothic-next", sans-serif;
+color: var(--main-font-colour);
+transition-duration: 300ms;
+        }
+        a:hover{
+            color: var(--orange);
+        }
+
         .information {
             width: 100%;
             padding-left: 1.5rem;
