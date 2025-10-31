@@ -54,7 +54,7 @@
             content: '';
             position: absolute;
             width: 250px;
-            height: 65%;
+            height: 65vh;
             border-radius: 50%;
             background: linear-gradient(135deg, #F5D5F7 0%, #B9FBED 100%);
             filter: blur(50px);
