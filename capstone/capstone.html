@@ -1,71 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capstone Experiment</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Trace</title>
     <link rel="manifest" href="manifest.json">
-
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
-
-<meta name="theme-color" content="#333333">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <meta name="theme-color" content="#333333">
+    <link rel="stylesheet" href="styletest.css">
+    <script src="https://kit.fontawesome.com/f49cf1727e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div>Teachable Machine Image Model</div>
-<button type="button" onclick="init()">Start</button>
-<div id="webcam-container"></div>
-<div id="label-container"></div>
+    <!-- Camera Screen -->
+    <div id="camera-screen" class="screen active">
+        <div class="camera-header">
+            <h1>Take a Photo</h1>
+            <p>Make sure you are in a well lit area</p>
+        </div>
+        <div class="camera-container">
+            <video id="video-element" autoplay playsinline></video>
+            <div class="flash-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="camera-controls">
+                <button class="capture-btn" id="capture-btn"></button>
+                <button class="control-btn" id="flip-btn">↻</button>
+            </div>
+        </div>
+    </div>
 
+    <!-- Analysis Screen -->
+    <div id="analysis-screen" class="screen">
+        <div class="analysis-content">
+            <div class="gradient-circle"></div>
+            <h2>Analysing your photo
+                <br>Thank you for your patience!
+            </h2>
+        </div>
+    </div>
 
-<script type="text/javascript">
-    const URL = "https://teachablemachine.withgoogle.com/models/QNAKhcePp/";
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen">
+        <div class="results-header">
+            <h1>Photo Traced</h1>
+        </div>
+        <div class="results-image">
+            <img id="captured-image" src="" alt="Captured skin">
+        </div>
+        <div class="results-container">
+            <div class="results-title">Photo Trace</div>
+            <div class="result-tags" id="result-tags"></div>
+        </div>
+        <div class="action-buttons">
+            <button class="action-btn" id="retake-btn">Retake Photo</button>
+        </div>
+    </div>
 
-    let model, webcam, labelContainer, maxPredictions;
+    <canvas id="hidden-canvas"></canvas>
 
-    async function init() {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
+    <script>
+        const URL = "https://teachablemachine.withgoogle.com/models/QNAKhcePp/";
+        let model, webcam, currentScreen = 'camera', capturedImageData;
+        let videoElement = document.getElementById('video-element');
+        let stream = null;
 
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
-
-        const flip = true;
-        webcam = new tmImage.Webcam(200, 200, flip);
-        await webcam.setup();
-        await webcam.play();
-
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
-
-        labelContainer = document.getElementById("label-container");
-        labelContainer.innerHTML = '';
-        for (let i = 0; i < maxPredictions; i++) {
-            labelContainer.appendChild(document.createElement("div"));
+        // Screen management
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId + '-screen').classList.add('active');
+            currentScreen = screenId;
         }
 
-        // 🟢 Take one frame & predict once
-        await webcam.update();
-        await predict();
-    }
-
-    async function predict() {
-        const prediction = await model.predict(webcam.canvas);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
+        // Initialize camera using native video
+        async function initCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: 'user',
+                        width: { ideal: 1280 },
+                        height: { ideal: 1720 }
+                    }
+                });
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing camera:", error);
+                alert("Could not access camera. Please ensure you've granted camera permissions.");
+            }
         }
-    }
-</script>
 
-<script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./service-worker.js')
-        .then(() => console.log('Service Worker Registered'));
-    }
-</script>
+        // Initialize model
+        async function initModel() {
+            try {
+                const modelURL = URL + "model.json";
+                const metadataURL = URL + "metadata.json";
+                model = await tmImage.load(modelURL, metadataURL);
+                console.log("Model loaded successfully");
+            } catch (error) {
+                console.error("Error loading model:", error);
+            }
+        }
 
+        // Capture photo from video
+        function capturePhoto() {
+            const canvas = document.getElementById('hidden-canvas');
+            const video = document.getElementById('video-element');
+
+            // Set canvas size to match video
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // Draw video frame to canvas
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Get image data
+            capturedImageData = canvas.toDataURL('image/jpeg');
+
+            showScreen('analysis');
+
+            // Analyze after delay
+            setTimeout(async () => {
+                await analyzeImage();
+                showScreen('results');
+            }, 2500);
+        }
+
+        // Analyze image with model
+        async function analyzeImage() {
+            if (!model) {
+                console.error("Model not loaded");
+                return;
+            }
+
+            // Display captured image
+            document.getElementById('captured-image').src = capturedImageData;
+
+            // Create image element for prediction
+            const img = new Image();
+            img.src = capturedImageData;
+
+            img.onload = async () => {
+                const predictions = await model.predict(img);
+
+                // Create result tags from predictions
+                const resultsContainer = document.getElementById('result-tags');
+                resultsContainer.innerHTML = '';
+
+                predictions.forEach(pred => {
+                    const percentage = Math.round(pred.probability * 100);
+                    if (percentage > 5) {
+                        const tag = document.createElement('div');
+                        tag.className = 'result-tag';
+                        tag.textContent = `${pred.className} ${percentage}%`;
+                        resultsContainer.appendChild(tag);
+                    }
+                });
+            };
+        }
+
+        // Retake photo
+        function retakePhoto() {
+            showScreen('camera');
+            // Restart camera if needed
+            if (!stream || !stream.active) {
+                initCamera();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('capture-btn').addEventListener('click', capturePhoto);
+        document.getElementById('retake-btn').addEventListener('click', retakePhoto);
+        document.getElementById('flip-btn').addEventListener('click', async () => {
+            // Stop current stream
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            // Restart with back camera
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: {
+                        facingMode: stream.getVideoTracks()[0].getSettings().facingMode === 'user' ? 'environment' : 'user'
+                    }
+                });
+                videoElement.srcObject = stream;
+            } catch (error) {
+                console.error("Error flipping camera:", error);
+            }
+        });
+
+        // Initialize everything on load
+        window.addEventListener('load', () => {
+            initCamera();
+            initModel();
+        });
+    </script>
 </body>
+
 </html>
