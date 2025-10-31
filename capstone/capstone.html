@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <title>Trace</title>
     <link rel="manifest" href="manifest.json">
@@ -116,7 +117,10 @@
 
             // Draw video frame to canvas
             const ctx = canvas.getContext('2d');
+            ctx.translate(canvas.width, 0);  /* ← ADDED - move drawing origin to right edge */
+            ctx.scale(-1, 1);                /* ← ADDED - flip horizontally */
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
 
             // Get image data
             capturedImageData = canvas.toDataURL('image/jpeg');
