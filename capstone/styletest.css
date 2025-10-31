@@ -54,7 +54,7 @@
             content: '';
             position: absolute;
             width: 250px;
-            height: 65vh;
+            height: 250px;
             border-radius: 50%;
             background: linear-gradient(135deg, #F5D5F7 0%, #B9FBED 100%);
             filter: blur(50px);
@@ -92,6 +92,7 @@
             position: relative;
             width: 90%;
             max-width: 400px;
+            height: 75vh;
             aspect-ratio: 3/4;
             background: #333;
             border-radius: 16px;
