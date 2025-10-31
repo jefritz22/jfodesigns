@@ -1,6 +1,6 @@
 {
-  "name": "Teachable Machine Classifier",
-  "short_name": "Classifier",
+  "name": "Trace",
+  "short_name": "Trace",
   "start_url": "./capstone.html",
   "display": "standalone",
   "background_color": "#ffffff",
