@@ -69,6 +69,7 @@
         let model, webcam, currentScreen = 'camera', capturedImageData;
         let videoElement = document.getElementById('video-element');
         let stream = null;
+        let currentFacingMode = 'user';
 
         // Screen management
         function showScreen(screenId) {
@@ -82,12 +83,17 @@
             try {
                 stream = await navigator.mediaDevices.getUserMedia({
                     video: {
-                        facingMode: 'user',
+                        facingMode: currentFacingMode,
                         width: { ideal: 1280 },
                         height: { ideal: 1720 }
                     }
                 });
                 videoElement.srcObject = stream;
+                if (currentFacingMode === 'user') {
+            videoElement.classList.add('mirrored');
+        } else {
+            videoElement.classList.remove('mirrored');
+        }
             } catch (error) {
                 console.error("Error accessing camera:", error);
                 alert("Could not access camera. Please ensure you've granted camera permissions.");

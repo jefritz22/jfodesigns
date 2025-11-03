@@ -105,8 +105,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scaleX(-1);
         }
+
+        #video-element.mirrored {
+    transform: scaleX(-1);
+}
 
         .flash-icon {
             position: absolute;
