@@ -27,7 +27,7 @@
         </div>
         <div class="camera-container">
             <video id="video-element" autoplay playsinline></video>
-            <div class="flash-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="flash-icon" id="flash-btn" ><i class="fa-solid fa-bolt"></i></div>
             <div class="camera-controls">
                 <button class="capture-btn" id="capture-btn"></button>
                 <button class="control-btn" id="flip-btn">↻</button>
@@ -65,11 +65,12 @@
     <canvas id="hidden-canvas"></canvas>
 
     <script>
-        const URL = "https://teachablemachine.withgoogle.com/models/QNAKhcePp/";
+         const URL = "https://teachablemachine.withgoogle.com/models/QNAKhcePp/";
         let model, webcam, currentScreen = 'camera', capturedImageData;
         let videoElement = document.getElementById('video-element');
         let stream = null;
         let currentFacingMode = 'user'; // Track current camera
+        let flashOn = false; // Track flash state
 
         // Screen management
         function showScreen(screenId) {
