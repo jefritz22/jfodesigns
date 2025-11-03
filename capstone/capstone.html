@@ -69,7 +69,7 @@
         let model, webcam, currentScreen = 'camera', capturedImageData;
         let videoElement = document.getElementById('video-element');
         let stream = null;
-        let currentFacingMode = 'user';
+        let currentFacingMode = 'user'; // Track current camera
 
         // Screen management
         function showScreen(screenId) {
@@ -81,19 +81,21 @@
         // Initialize camera using native video
         async function initCamera() {
             try {
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
+                stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
                         facingMode: currentFacingMode,
                         width: { ideal: 1280 },
                         height: { ideal: 1720 }
-                    }
+                    } 
                 });
                 videoElement.srcObject = stream;
+                
+                // Apply mirror effect only to front camera
                 if (currentFacingMode === 'user') {
-            videoElement.classList.add('mirrored');
-        } else {
-            videoElement.classList.remove('mirrored');
-        }
+                    videoElement.classList.add('mirrored');
+                } else {
+                    videoElement.classList.remove('mirrored');
+                }
             } catch (error) {
                 console.error("Error accessing camera:", error);
                 alert("Could not access camera. Please ensure you've granted camera permissions.");
@@ -116,23 +118,32 @@
         function capturePhoto() {
             const canvas = document.getElementById('hidden-canvas');
             const video = document.getElementById('video-element');
-
+            
             // Set canvas size to match video
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-
+            
             // Draw video frame to canvas
             const ctx = canvas.getContext('2d');
-            ctx.translate(canvas.width, 0);  /* ← ADDED - move drawing origin to right edge */
-            ctx.scale(-1, 1);                /* ← ADDED - flip horizontally */
+            
+            // Only flip if front camera (mirrored view)
+            if (currentFacingMode === 'user') {
+                ctx.translate(canvas.width, 0);
+                ctx.scale(-1, 1);
+            }
+            
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-
+            
+            // Reset transform
+            if (currentFacingMode === 'user') {
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            }
+            
             // Get image data
             capturedImageData = canvas.toDataURL('image/jpeg');
-
+            
             showScreen('analysis');
-
+            
             // Analyze after delay
             setTimeout(async () => {
                 await analyzeImage();
@@ -149,18 +160,18 @@
 
             // Display captured image
             document.getElementById('captured-image').src = capturedImageData;
-
+            
             // Create image element for prediction
             const img = new Image();
             img.src = capturedImageData;
-
+            
             img.onload = async () => {
                 const predictions = await model.predict(img);
-
+                
                 // Create result tags from predictions
                 const resultsContainer = document.getElementById('result-tags');
                 resultsContainer.innerHTML = '';
-
+                
                 predictions.forEach(pred => {
                     const percentage = Math.round(pred.probability * 100);
                     if (percentage > 5) {
@@ -190,17 +201,12 @@
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
             }
-            // Restart with back camera
-            try {
-                stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
-                        facingMode: stream.getVideoTracks()[0].getSettings().facingMode === 'user' ? 'environment' : 'user'
-                    }
-                });
-                videoElement.srcObject = stream;
-            } catch (error) {
-                console.error("Error flipping camera:", error);
-            }
+            
+            // Toggle camera
+            currentFacingMode = currentFacingMode === 'user' ? 'environment' : 'user';
+            
+            // Restart camera
+            await initCamera();
         });
 
         // Initialize everything on load
